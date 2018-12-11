@@ -17,7 +17,7 @@ unzip(tmp, exdir = tmpdir)
 y <- list.files(tmpdir, 'shp')
 bnd <- readOGR(tmpdir, sub('\\.shp$', '', y[grepl('Constituencies', y)]))
 bnd <- bnd[, 1:2]
-saveRDS(bnd, '/home/datamaps/WeR-meetup/shiny-apps/uk_petitions/boundaries')
+saveRDS(bnd, '~/shiny-apps/uk_petitions/boundaries')
 
 # download election data
 download.file(
@@ -27,7 +27,7 @@ download.file(
 )
 electors <- as.data.table(read_xls(tmp.xls, sheet = 5))
 electors <- electors[, c(1, 5)]
-saveRDS(electors, '/home/datamaps/WeR-meetup/shiny-apps/uk_petitions/electors')
+saveRDS(electors, '~/shiny-apps/uk_petitions/electors')
 
 # clean
 unlink(tmp)
