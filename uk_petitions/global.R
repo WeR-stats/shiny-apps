@@ -3,10 +3,7 @@
 ###############################
 
 # load packages
-pkgs <- c(
-    'Cairo', 'classInt', 'colourpicker', 'data.table', 'DT', 'fontawesome', 'jsonlite', 'htmltools', 'htmlwidgets', 'leaflet', 
-    'RColorBrewer', 'readxl', 'rgdal', 'rgeos', 'scales', 'shiny', 'shinyjs', 'shinyWidgets', 'tools'
-)
+pkgs <- c('Cairo', 'classInt', 'colourpicker', 'data.table', 'DT', 'jsonlite', 'leaflet', 'RColorBrewer', 'rgdal', 'rgeos', 'shiny', 'shinyjs', 'shinyWidgets')
 lapply(pkgs, require, char = TRUE)
 
 # set constants
