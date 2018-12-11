@@ -104,7 +104,7 @@ shinyServer(function(input, output, session) {
             pal_poly <- findColours(brks_poly, col_codes)
 
             # calculate centroid of the selected region
-            yc <- rgeos::gCentroid(pbnd)@coords
+            yc <- gCentroid(pbnd)@coords
 
             # build the map
             leaflet(options = leafletOptions(minZoom = 6)) %>%
@@ -229,7 +229,7 @@ shinyServer(function(input, output, session) {
         pal_poly <- findColours(brks_poly, col_codes)
 
         # calculate centroid of the selected region
-        yc <- rgeos::gCentroid(pbnd)@coords
+        yc <- gCentroid(pbnd)@coords
 
         # build the map
         leaflet(options = leafletOptions(minZoom = 6)) %>%
