@@ -1,6 +1,7 @@
 ###############################
 # UK PETITIONS MAP * global.R #
 ###############################
+# system('cp ~/shinyapps/uk_petitions/* /srv/shiny-server/uk_petitions/')
 
 # load packages
 pkgs <- c('Cairo', 'classInt', 'colourpicker', 'data.table', 'DT', 'jsonlite', 'leaflet', 'RColorBrewer', 'rgdal', 'rgeos', 'shiny', 'shinyjs', 'shinyWidgets')
