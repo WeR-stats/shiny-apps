@@ -47,22 +47,60 @@ shinyServer(function(input, output, session) {
     }) 
     
     output$out_table <- DT::renderDataTable({ 
+        
+        n_cls <- 9
+        w_cls <- 3
+        v_cls <- unlist(classIntervals(dts()$permille, n_cls)[2])[2:n_cls]
+        
         datatable( 
             dts(), 
             rownames = FALSE ,
+            colnames = c('Constituency', 'ONS code', 'MP', 'Electors', 'Signatures', 'permille'),
             selection = 'none',
             class = 'cell-border nowrap',
-            extensions = c('Buttons', 'Scroller'),
+            extensions = c('Buttons', 'FixedColumns', 'Scroller'),
             options = list(
                 scrollX = TRUE,
                 scrollY = 400,
                 scroller = TRUE,
+                fixedColumns = list(leftColumns = 1),
+                searchHighlight = TRUE,
                 buttons = c('copy', 'csv', 'print'),
                 ordering = TRUE,
+                columnDefs = list(list(className = 'dt-center', targets = 1)),
                 deferRender = TRUE,
+                initComplete = JS(
+                    "function(settings, json) {",
+                        "$(this.api().table().header()).css({
+                            'text-align': 'center',
+                            'background-color': '#000000', 
+                            'color': '#F2FF00',
+                            'font-size': '130%'
+                        });",
+                    "}"
+                ),
                 dom = 'Biftp'
             ) 
-        ) %>% formatCurrency(c('electors', 'signatures'), '', digits = 0)
+        ) %>% 
+        formatCurrency(c('electors', 'signatures'), '', digits = 0) %>% 
+        formatStyle('electors',
+            background = styleColorBar(dts()$electors, '#C6DBEF'),
+            backgroundSize = '90% 75%',
+            backgroundRepeat = 'no-repeat',
+            backgroundPosition = 'center'
+        ) %>% 
+        formatStyle('signatures',
+            background = styleColorBar(dts()$signatures, '#7CEB61'),
+            backgroundSize = '90% 75%',
+            backgroundRepeat = 'no-repeat',
+            backgroundPosition = 'center'
+        ) %>% 
+        formatStyle('permille', 
+            `font-weight` = '600',
+            backgroundColor = styleInterval(v_cls , brewer.pal(n_cls, 'OrRd')),
+            color = styleInterval( v_cls, c(rep('black', n_cls - w_cls), rep('white', w_cls))) 
+        )
+        
     })    
     
     observeEvent(input$map_draw, {
