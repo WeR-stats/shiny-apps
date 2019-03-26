@@ -98,12 +98,12 @@ shinyUI(fluidPage(
                     # SHOW Uncovered Areas
                     checkboxInput('flag_nocov', 'Show also Uncovered Area Options?'),
         		    conditionalPanel("input.flag_nocov",
-                        # Non Bookers: Fill Color
-                        colourpicker::colourInput('col_opt_ncl', 'FILL COLOUR (non bookers):', value = 'gray20', showColour = 'background'),
-                        # Non Bookers: Highlight Size
-                        sliderInput('sld_opt_nhs', 'HIGHLIGHT SIZE (non bookers):', min = 1, max = 20, value = 4, step = 1, ticks = FALSE),
-                        # Non Bookers: Highlight Color
-                        colourpicker::colourInput('col_opt_nhc', 'HIGHLIGHT COLOUR (non bookers):', value = 'red', showColour = 'background')
+                        # Non subscribers: Fill Color
+                        colourpicker::colourInput('col_opt_ncl', 'FILL COLOUR (non subscribers):', value = 'gray20', showColour = 'background'),
+                        # Non subscribers: Highlight Size
+                        sliderInput('sld_opt_nhs', 'HIGHLIGHT SIZE (non subscribers):', min = 1, max = 20, value = 4, step = 1, ticks = FALSE),
+                        # Non subscribers: Highlight Color
+                        colourpicker::colourInput('col_opt_nhc', 'HIGHLIGHT COLOUR (non subscribers):', value = 'red', showColour = 'background')
         		    )
     		    ),
     
