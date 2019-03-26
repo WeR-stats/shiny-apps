@@ -1,0 +1,16 @@
+Cairo
+classInt
+colourpicker
+data.table
+devtools
+DT
+jsonlite
+leaflet
+leaflet.extras
+RColorBrewer
+readxl
+rgdal
+rgeos
+shinyjs
+shinyWidgets
+sp
